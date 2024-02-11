@@ -19,7 +19,7 @@ set(version_patch 0)
 set(version ${version_major}.${version_minor}.${version_patch})
 set(PACKAGE_VERSION ${version})
 
-set(sources src/rshash.c src/pjw.c)
+set(sources src/rshash.c src/pjw.c src/polynomial-rolling.c)
 
 # -----
 # Build type
@@ -148,7 +148,7 @@ if(GHASH_BUILD_TESTS)
 	include(CTest)
 	enable_testing()
 
-	foreach(TEST_NAME pjwhash rshash)
+	foreach(TEST_NAME pjwhash rshash polynomial-rolling)
 		add_executable(ghash-test-${TEST_NAME} ${CMAKE_SOURCE_DIR}/tests/test-${TEST_NAME}.c)
 		target_compile_definitions(ghash-test-${TEST_NAME} PRIVATE ${defines})
     target_compile_options(ghash-test-${TEST_NAME} PRIVATE ${cflags})
